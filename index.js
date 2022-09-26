@@ -4,6 +4,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
+const AuthRoute = require('./Routes/AuthRoute')
+
 
 
 const app = express();
@@ -28,6 +30,7 @@ mongoose.connect(process.env.MONGO_URI, {
     console.log('MongoDB connected...')
    })
 
-app.use('/', (req,res)=> {
-res.send('Running Fine!')
-})
+
+// Routes 
+
+app.use('/auth', AuthRoute)
