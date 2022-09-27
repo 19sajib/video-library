@@ -28,12 +28,12 @@ const signUpUser = async (req, res) => {
 }
 
 const signInUser = async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    if(!username || !password) return res.status(401).json('Invalid Credentials')
+    if(!email || !password) return res.status(401).json('Invalid Credentials')
 
     try {
-        const user = await UserModel.findOne({username})
+        const user = await UserModel.findOne({email})
         
         if(!user) return res.status(401).json('Invalid Credentials')
         
