@@ -4,12 +4,15 @@ import { useSelector }from 'react-redux'
 import Home from './pages/Home'
 import Auth from './pages/Auth'
 
+import Navbar from './components/Navbar'
+
 const App = () => {
 
   const user = useSelector((state)=> state.authReducer.authData)
 
   return (
-    <div>
+    <div style={{margin: '10px'}}>
+      <Navbar />
       <BrowserRouter>
           <Routes>
               <Route path="/" exact element={<Home />} />
