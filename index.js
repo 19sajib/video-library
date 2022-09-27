@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
 const AuthRoute = require('./Routes/AuthRoute')
+const VideoRoute = require('./Routes/VideoRoute')
 
 
 
@@ -34,3 +35,4 @@ mongoose.connect(process.env.MONGO_URI, {
 // Routes 
 
 app.use('/auth', AuthRoute)
+app.use('/video', VideoRoute)

@@ -5,6 +5,10 @@ const VideoSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    username: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
@@ -37,4 +41,4 @@ const VideoSchema = new mongoose.Schema({
 
 const VideoModel = mongoose.model('Video', VideoSchema)
 
-export default VideoModel
+module.exports = VideoModel
