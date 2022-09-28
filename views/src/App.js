@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Auth from './pages/Auth'
 
 import Navbar from './components/Navbar'
+import Video from './pages/Video'
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
           <Routes>
               <Route path="/" exact element={<Home />} />
               <Route path="/auth" element={ user ? <Navigate to = "/"/> : <Auth /> } />
+              <Route path="/video/:id" element={<Video />} />
           </Routes>
       </BrowserRouter>
     </div>
