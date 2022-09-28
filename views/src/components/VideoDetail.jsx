@@ -12,7 +12,7 @@ import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 
 
-import { addView } from '../actions/VideoAction'
+import { addView, addLike, addDislike } from '../actions/VideoAction'
 
 const VideoDetail = ({data}) => {
 
@@ -61,7 +61,10 @@ const VideoDetail = ({data}) => {
                 <Typography variant="body1" sx={{ opacity: 0.7, alignItems: "center", mr: '5px' }}>
                   {parseInt(views).toLocaleString()} views  • {moment(createdAt).fromNow()}
                 </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.7,  alignItems: "center" }}>
+                <Typography variant="body1" 
+                            sx={{ opacity: 0.7,  alignItems: "center" }}
+                            onClick={()=>dispatch(addLike(id))}
+                            >
                   {likes?.includes(user?._id) ? (
                     <ThumbUpAltIcon sx={{ fontSize: "22px", color: "gray", ml: "5px" }} />
                       ) : (
@@ -69,7 +72,10 @@ const VideoDetail = ({data}) => {
                     )}{" "}
                     {likes?.length}
                 </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.7,  alignItems: "center" }}>
+                <Typography variant="body1" 
+                            sx={{ opacity: 0.7,  alignItems: "center" }}
+                            onClick={()=>dispatch(addDislike(id))}
+                            >
                 {dislikes?.includes(user?._id) ? (
                     <ThumbDownAltIcon sx={{ fontSize: "22px", color: "gray", ml: "5px" }} />
                       ) : (

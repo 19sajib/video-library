@@ -4,10 +4,12 @@ const API = axios.create({baseURL: "http://localhost:9090"})
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('profile')) {
-      req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+      req.headers.authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
     }
     return req;
   });
 
 export const getAllVideo = () => API.get(`/video/all`)
 export const addView = id => API.put(`/video/view/${id}`)
+export const addLike = id => API.put(`/video/like/${id}`)
+export const addDislike = id => API.put(`/video/dislike/${id}`)
