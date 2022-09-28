@@ -1,5 +1,16 @@
 import * as VideoAPI from '../api/VideoRequest'
 
+export const getVideo = (id) => async (dispatch) => {
+    dispatch({type: "VIDEO_START"})
+    try {
+        const { data } = await VideoAPI.getVideo(id)
+        console.log(data);
+        dispatch({type: "VIDEO_SINGLE", data: data})
+    } catch (error) {
+        dispatch({type: "VIDEO_FAIL"})
+    }
+}
+
 export const getAllVideo = () => async (dispatch) => {
     dispatch({type: "VIDEO_START"})
     try {
@@ -29,12 +40,22 @@ export const addLike = (id) => async (dispatch) => {
         dispatch({type: "VIDEO_FAIL"})
     }
 }
+
 export const addDislike = (id) => async (dispatch) => {
     dispatch({type: "VIDEO_START"})
     try {
         const { data } = await VideoAPI.addDislike(id)
-        console.log(data);
         dispatch({type: "VIDEO_DISLIKE", data: data})
+    } catch (error) {
+        dispatch({type: "VIDEO_FAIL"})
+    }
+}
+
+export const allInteraction = (id) => async (dispatch) => {
+    dispatch({type: "VIDEO_START"})
+    try {
+        const { data } = await VideoAPI.allInteraction(id)
+        dispatch({type: "VIDEO_INTERACTION", data: data})
     } catch (error) {
         dispatch({type: "VIDEO_FAIL"})
     }

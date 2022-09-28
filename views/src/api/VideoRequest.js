@@ -9,7 +9,9 @@ API.interceptors.request.use((req) => {
     return req;
   });
 
+export const getVideo = id => API.get(`/video/${id}`)
 export const getAllVideo = () => API.get(`/video/all`)
 export const addView = id => API.put(`/video/view/${id}`)
 export const addLike = id => API.put(`/video/like/${id}`)
 export const addDislike = id => API.put(`/video/dislike/${id}`)
+export const allInteraction = id => API.get(`/video/interact/${id}`)

@@ -1,39 +1,33 @@
 import moment from 'moment';
 import ReactPlayer from "react-player";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux' 
+import { useDispatch } from 'react-redux' 
 import Avatar from '@mui/material/Avatar';
-import { Typography, Box, Stack } from "@mui/material";
+import { Typography, Box, Stack, Button } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 
-
 import { addView, addLike, addDislike } from '../actions/VideoAction'
 
-const VideoDetail = ({data}) => {
+const VideoDetail = ({data, user}) => {
 
     const {id} = useParams();
-    console.log(id);
     const dispatch = useDispatch();
 
-    const[ played, setPlayed ] = useState(0)
-
-    const  user  = useSelector((state)=> state.authReducer.authData)
-
-    const { title, videoUrl, userId, likes, dislikes, views, createdAt, desc, username } = data;
+    const[played, setPlayed] = useState(0)
+    const { title, videoUrl, userId, likes, dislikes, views, createdAt, username } = data;
 
     const viewCount = (progress) => {
-        console.log(progress);
         if(played===0 && progress.playedSeconds > 6) {
             setPlayed((prev)=>prev+1)
             dispatch(addView(id))
         }
-        console.log(played);
     }
+
   return (
     <Stack direction={{ xs: "column", md: "row" }}>
         <Box flex={1}>
@@ -61,33 +55,32 @@ const VideoDetail = ({data}) => {
                 <Typography variant="body1" sx={{ opacity: 0.7, alignItems: "center", mr: '5px' }}>
                   {parseInt(views).toLocaleString()} views  • {moment(createdAt).fromNow()}
                 </Typography>
-                <Typography variant="body1" 
-                            sx={{ opacity: 0.7,  alignItems: "center" }}
+                <Button     color= "primary"
+                            sx={{ alignItems: "center", cursor: "pointer" }}
                             onClick={()=>dispatch(addLike(id))}
+                            disabled={!user}
                             >
                   {likes?.includes(user?._id) ? (
-                    <ThumbUpAltIcon sx={{ fontSize: "22px", color: "gray", ml: "5px" }} />
+                    <ThumbUpAltIcon sx={{ fontSize: "22px", color: "primary", mr: "5px" }} />
                       ) : (
-                    <ThumbUpOffAltIcon sx={{ fontSize: "22px", color: "gray", ml: "5px" }} />
-                    )}{" "}
+                    <ThumbUpOffAltIcon sx={{ fontSize: "22px", color: "gray", mr: "5px" }} />
+                    )}
                     {likes?.length}
-                </Typography>
-                <Typography variant="body1" 
-                            sx={{ opacity: 0.7,  alignItems: "center" }}
+                </Button>
+                <Button     color= "secondary"
+                            sx={{ alignItems: "center", cursor: "pointer" }}
                             onClick={()=>dispatch(addDislike(id))}
+                            disabled={!user}
                             >
                 {dislikes?.includes(user?._id) ? (
-                    <ThumbDownAltIcon sx={{ fontSize: "22px", color: "gray", ml: "5px" }} />
+                    <ThumbDownAltIcon sx={{ fontSize: "22px", color: "secondary", mr: "5px" }} />
                       ) : (
-                  <ThumbDownOffAltIcon sx={{ fontSize: "22px", color: "gray", ml: "5px" }} />
-                      )}{" "}
+                  <ThumbDownOffAltIcon sx={{ fontSize: "22px", color: "gray", mr: "5px" }} />
+                      )}
                   {parseInt(dislikes?.length).toLocaleString()}
-                </Typography>
+                </Button>
               </Stack>
             </Stack>
-              <Typography color="gray" variant="h6" fontWeight="bold"  align="left" p={2}>
-              {desc}
-              </Typography>
           </Box>
         </Box>
       </Stack>

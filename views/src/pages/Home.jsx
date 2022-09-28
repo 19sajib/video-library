@@ -9,8 +9,7 @@ import { getAllVideo } from '../actions/VideoAction'
 const Home = () => {
 
   const dispatch = useDispatch()
-  let { videos } = useSelector((state) => state.videoReducer)
-  console.log(videos);
+  let { videos } = useSelector((state) => state.videoReducer);
   
   React.useEffect(() => {
     dispatch(getAllVideo())
