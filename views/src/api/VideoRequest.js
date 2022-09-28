@@ -10,3 +10,4 @@ API.interceptors.request.use((req) => {
   });
 
 export const getAllVideo = () => API.get(`/video/all`)
+export const addView = id => API.put(`/video/view/${id}`)

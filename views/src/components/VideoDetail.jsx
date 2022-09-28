@@ -12,17 +12,25 @@ import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 
 
+import { addView } from '../actions/VideoAction'
+
 const VideoDetail = ({data}) => {
 
-    const[ played, setPlayed ] = useState(0)
+    const {id} = useParams();
+    console.log(id);
     const dispatch = useDispatch();
+
+    const[ played, setPlayed ] = useState(0)
+
     const  user  = useSelector((state)=> state.authReducer.authData)
+
     const { title, videoUrl, userId, likes, dislikes, views, createdAt, desc, username } = data;
 
     const viewCount = (progress) => {
         console.log(progress);
         if(played===0 && progress.playedSeconds > 6) {
             setPlayed((prev)=>prev+1)
+            dispatch(addView(id))
         }
         console.log(played);
     }

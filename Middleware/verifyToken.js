@@ -1,11 +1,11 @@
-import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'
+const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv')
 
 dotenv.config();
 
 const secret = process.env.JWT_SECRET_KEY;
 
-export const verifyToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if(authHeader) {
         const token = authHeader.split(" ")[1];
@@ -19,7 +19,7 @@ export const verifyToken = (req, res, next) => {
     }
 }
 
-export const verifyTokenAndAuthorization = (req, res, next) => {
+const verifyTokenAndAuthorization = (req, res, next) => {
     verifyToken(req, res, () => {
         if(req.user.id === req.params.id) {
             next();
@@ -28,3 +28,5 @@ export const verifyTokenAndAuthorization = (req, res, next) => {
         }
     })
 }
+
+module.exports = { verifyToken, verifyTokenAndAuthorization }

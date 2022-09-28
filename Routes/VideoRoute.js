@@ -1,12 +1,13 @@
 const express = require('express')
 
-import { verifyToken } from '../Middleware/verifyToken.js'
-const { addVideo, allVideo } = require('../Controllers/VideoController')
+const { verifyToken } = require('../Middleware/verifyToken')
+const { addVideo, allVideo, addView } = require('../Controllers/VideoController')
 
 const router = express.Router()
 
 
-router.post('/add', verifyToken, addVideo)
 router.get('/all', allVideo)
+router.put('/view/:id', addView)
+router.post('/add', verifyToken, addVideo)
 
 module.exports = router
