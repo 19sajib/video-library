@@ -22,9 +22,6 @@ const UserSchema = new mongoose.Schema({
     image: {
         type: String,
     },
-    subscribedUsers: {
-        type: [String],
-      },
 }, { timestamps:true })
 
 const UserModel = mongoose.model('Users', UserSchema)

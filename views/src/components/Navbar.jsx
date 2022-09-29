@@ -83,7 +83,7 @@ const Navbar = () => {
           {user ? <Box sx={{ flexGrow: 0, display: 'flex',alignItems: 'center' }}>
           <Typography 
             variant="h5"
-            href="/profile"
+            href={`/user/${user._id}`}
             noWrap
             component="a"
             sx={{
@@ -135,7 +135,7 @@ const Navbar = () => {
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography 
                      textAlign="center"
-                     href="/profile"
+                     href={`/user/${user._id}`}
                      noWrap
                      component="a"
                      sx={{ 
