@@ -4,7 +4,7 @@ const UserModel = require('../Models/User')
 // Adding Video   
 
 const addVideo = async (req, res) => {
-
+    
     const newVideo = new VideoModel(req.body)
     try {
         const video = await newVideo.save();
@@ -25,6 +25,7 @@ const singleVideo = async (req, res) => {
         
     }
 }
+
 // Get All video
 
 const allVideo = async (req, res) => {

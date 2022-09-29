@@ -1,5 +1,16 @@
 import * as VideoAPI from '../api/VideoRequest'
 
+export const addVideo = (videoData) => async (dispatch) => {
+    dispatch({type: "VIDEO_START"})
+    try {
+        const { data } = await VideoAPI.addVideo(videoData)
+        console.log(data);
+        dispatch({type: "VIDEO_CREATION", data: data})
+    } catch (error) {
+        dispatch({type: "VIDEO_FAIL"})
+    }
+}
+
 export const getVideo = (id) => async (dispatch) => {
     dispatch({type: "VIDEO_START"})
     try {

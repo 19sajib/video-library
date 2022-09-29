@@ -6,6 +6,7 @@ import Auth from './pages/Auth'
 
 import Navbar from './components/Navbar'
 import Video from './pages/Video'
+import Dashboard from './pages/Dashboard'
 
 const App = () => {
 
@@ -17,8 +18,9 @@ const App = () => {
       <BrowserRouter>
           <Routes>
               <Route path="/" exact element={<Home />} />
-              <Route path="/auth" element={ user ? <Navigate to = "/"/> : <Auth /> } />
               <Route path="/video/:id" element={<Video />} />
+              <Route path="/dashboard/:id" element={ user ? <Dashboard /> : <Auth /> } />
+              <Route path="/auth" element={ user ? <Navigate to = "/"/> : <Auth /> } />
           </Routes>
       </BrowserRouter>
     </div>

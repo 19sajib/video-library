@@ -121,7 +121,7 @@ const Navbar = () => {
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography 
                   textAlign="center" 
-                  href="/dashboard"
+                  href={`/dashboard/${user._id}`}
                   noWrap
                   component="a"
                   sx={{ 

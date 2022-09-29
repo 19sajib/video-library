@@ -4,11 +4,11 @@ import VideoCard from './VideoCard'
 
 const Videos = ({videos}) => {
 
-  if(!videos?.video?.length) return "Retreiving Videos..."
+  if(!videos?.length) return "Retreiving Videos..."
 
   return (
     <Stack direction="row" flexWrap="wrap" justifyContent="start" alignItems="start" gap={3}>
-       {videos.video.map((video, id) => (
+       {videos.map((video, id) => (
           <Box key={id}> 
             <VideoCard video={video} />
           </Box>

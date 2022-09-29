@@ -10,6 +10,7 @@ const Home = () => {
 
   const dispatch = useDispatch()
   let { videos } = useSelector((state) => state.videoReducer);
+  videos = videos.video;
   
   React.useEffect(() => {
     dispatch(getAllVideo())
