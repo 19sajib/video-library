@@ -6,8 +6,7 @@ const videoReducer = (
         case "VIDEO_START" :
             return { ...state, loading: true, error:false}
         case "VIDEO_CREATION" :
-            console.log(action.data);
-            return { ...state, videos: [...state.videos, action.data], loading: false, error:false}
+            return { ...state, videos: [...state.videos.video, action.data.video], loading: false, error:false}
         case "VIDEO_SUCCESS":
             return { ...state, videos: action.data, loading: false, error:false}
         case "VIDEO_INTERACTION":

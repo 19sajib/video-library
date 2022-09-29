@@ -4,7 +4,9 @@ import VideoCard from './VideoCard'
 
 const Videos = ({videos}) => {
 
-  if(!videos?.length) return "Retreiving Videos..."
+  if(!videos) return "Retreiving Videos..."
+
+  if(!videos?.length) return "No Videos Found..."
 
   return (
     <Stack direction="row" flexWrap="wrap" justifyContent="start" alignItems="start" gap={3}>

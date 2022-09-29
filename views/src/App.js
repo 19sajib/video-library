@@ -1,6 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useSelector }from 'react-redux'
 
+
+import { Bounce, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Home from './pages/Home'
 import Auth from './pages/Auth'
 
@@ -25,6 +29,7 @@ const App = () => {
               <Route path="/auth" element={ user ? <Navigate to = "/"/> : <Auth /> } />
           </Routes>
       </BrowserRouter>
+      <ToastContainer autoClose={3000} transition={Bounce}/>
     </div>
   );
 }

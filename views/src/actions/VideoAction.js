@@ -4,8 +4,9 @@ export const addVideo = (videoData) => async (dispatch) => {
     dispatch({type: "VIDEO_START"})
     try {
         const { data } = await VideoAPI.addVideo(videoData)
-        console.log(data);
+  
         dispatch({type: "VIDEO_CREATION", data: data})
+        dispatch({type: 'CREATPOST'})
     } catch (error) {
         dispatch({type: "VIDEO_FAIL"})
     }
@@ -15,7 +16,7 @@ export const getVideo = (id) => async (dispatch) => {
     dispatch({type: "VIDEO_START"})
     try {
         const { data } = await VideoAPI.getVideo(id)
-        console.log(data);
+
         dispatch({type: "VIDEO_SINGLE", data: data})
     } catch (error) {
         dispatch({type: "VIDEO_FAIL"})

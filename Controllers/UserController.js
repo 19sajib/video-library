@@ -2,8 +2,10 @@ const UserModel = require('../Models/User')
 const VideoModel = require('../Models/Video')
 
 
-const userInfo = async (req, res) => {
 
+// Getting User Info + User's Video
+
+const userInfo = async (req, res) => {
 
     try {
         const user = await UserModel.findById(req.params.id)

@@ -16,7 +16,7 @@ import { addVideo } from '../actions/VideoAction'
 
 const theme = createTheme();
 
-const UploadVideo = ({user}) => {
+const UploadVideo = ({user, setReload}) => {
 
     const dispatch = useDispatch();
     const [videoData, setVideoData] = React.useState({ userId: user._id, username: user.username})
@@ -28,6 +28,7 @@ const UploadVideo = ({user}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(addVideo(videoData))
+        setReload((prev)=>prev+1)
         resetForm()
     }
 

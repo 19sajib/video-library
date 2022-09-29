@@ -16,7 +16,7 @@ const Video = () => {
   const  user  = useSelector((state)=> state.authReducer.authData)
   const data = useSelector((state)=> state.videoReducer.video)
   const interaction = useSelector((state)=> state.videoReducer.interaction)
-  console.log(interaction);
+
   useEffect(() => {
     dispatch(getVideo(id))
     dispatch(allInteraction(id))
