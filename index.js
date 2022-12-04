@@ -40,3 +40,15 @@ app.use('/api/v1/auth', AuthRoute)
 app.use('/api/v1/video', VideoRoute)
 app.use('/api/v1/user', UserRoute)
 app.use('/api/v1/comment', CommentRoute)
+
+
+// Deploying Frontend
+
+if(process.env.NODE_ENV=='production'){
+    const path = require('path')
+
+    app.get('/',(req,res)=>{
+        app.use(express.static(path.resolve(__dirname,'views','build')))
+        res.sendFile(path.resolve(__dirname,'views','build','index.html'))
+    })
+}
