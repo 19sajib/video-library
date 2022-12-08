@@ -1,5 +1,5 @@
 const videoReducer = (
-    state = { videos: [], video: {}, interaction: {}, loading: false, error: false,},
+    state = { videos: [], video: {}, comments: [], interaction: {}, loading: false, error: false,},
     action
 ) => {
     switch(action.type) {
@@ -16,6 +16,8 @@ const videoReducer = (
         case "VIDEO_DISLIKE":
         case "VIDEO_SINGLE":
             return { ...state, video: action.data, loading: false, error:false}
+            case "VIDEO_COMMENT":
+            return { ...state, comments: action.data, loading: false, error:false}
         case "VIDEO_FAIL":
             return { ...state, loading: false, error: true}
         default:
