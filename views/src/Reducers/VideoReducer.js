@@ -16,7 +16,7 @@ const videoReducer = (
         case "VIDEO_DISLIKE":
         case "VIDEO_SINGLE":
             return { ...state, video: action.data, loading: false, error:false}
-            case "VIDEO_COMMENT":
+        case "VIDEO_COMMENT":
             return { ...state, comments: action.data, loading: false, error:false}
         case "VIDEO_FAIL":
             return { ...state, loading: false, error: true}
