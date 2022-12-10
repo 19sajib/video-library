@@ -18,7 +18,7 @@ const addComment = async (req, res) => {
 const getComment = async (req, res) => {
 
     try {
-        if(!req.body.videoId) return res.status(403).json({message: 'Invalid Credentials'})
+        if(!req.body) return res.status(403).json({message: 'Invalid Credentials'})
 
         const comments = await CommentModel.find(req.body)
         res.status(200).json(comments)

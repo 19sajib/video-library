@@ -1,4 +1,4 @@
-import * as CommentAPI from '../api/CommentRequest'
+import * as CommentAPI from '../api/VideoRequest'
 
 export const getComment = (postId) => async (dispatch) => {
     dispatch({type: "VIDEO_START"})
