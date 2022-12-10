@@ -23,5 +23,5 @@ export const allInteraction = id => API.get(`/video/interact/${id}`)
 
 // Comment Endpoints
 
-export const getComment = postId => API.post(`/comment/all`, postId)
+export const getComment = postId => API.get(`/comment/${postId}`)
 export const addComment = commentData => API.post(`/comment/add`, commentData)

@@ -9,6 +9,10 @@ const CommentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    writerName: {
+        type: String,
+        required: true
+    },
     responseTo: {
         type: String
     },
