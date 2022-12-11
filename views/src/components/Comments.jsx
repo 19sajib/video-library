@@ -1,9 +1,11 @@
 import { Button, TextField } from '@mui/material'
 import React from 'react'
-import Comment from './SingleComment'
+import SingleComment from './SingleComment'
 
 const Comments = ({comments}) => {
 
+  const rootComment = comments.filter((comment)=> !comment.responseTo)
+  console.log(rootComment)
   const [comment, setComment] = React.useState("")
 
     const handleChange = (e) => {
@@ -31,8 +33,8 @@ const Comments = ({comments}) => {
             <p>Replies</p>
             {/* Comment Lists  */}
 
-      {comments.map((comment, index)=> (
-      <Comment key={index} data={comment} />
+      {rootComment.map((comment, index)=> (
+      <SingleComment key={index} comment={comment} comments={comments} />
       )
       )}
 

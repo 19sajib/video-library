@@ -1,14 +1,19 @@
 import React from 'react'
-import moment from 'moment'
+import * as timeago from 'timeago.js';
+import ReplyComment from './ReplyComment'
+import { Typography } from '@mui/material'
 
-const SignleComment = ({data}) => {
+const SignleComment = ({comment, comments}) => {
+  const responseComment = comments.filter((comm)=> comm.responseTo === comment._id)
+  console.log(responseComment)
   return (
     <div>
         <div style={{display: 'flex', alignItems: 'center'}}>
-        <h4>{data.writerName}</h4>
-        <h5>{moment(data.createdAt).startOf('hour').fromNow()}</h5>
+        <Typography variant='h5'>{comment.writerName}</Typography>
+        <Typography variant='body1' sx={{marginLeft: '5px'}}>{timeago.format(comment.createdAt)}</Typography>
         </div>
-        <h4 style={{display: 'flex'}}>{data.comment}</h4>
+        <Typography variant='h5' style={{display: 'flex'}}>{comment.comment}</Typography>
+       {responseComment?.length ? <ReplyComment responseComment={responseComment} comments={comments} /> : null}
     </div>
   )
 }
