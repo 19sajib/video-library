@@ -28,4 +28,29 @@ const getComment = async (req, res) => {
 
 }
 
-module.exports = { addComment, getComment }
+
+// Video Like
+
+const addCommentLike = async (req, res) => {
+    const userId = req.user.id;
+    const commentId = req.params.id;
+    try {
+        const comment = await CommentModel.findById(commentId)
+
+        const index = comment.likes.findIndex((id) => id === userId);
+          if (index === -1) {
+            comment.likes.push(userId);
+            // comment.dislikes = comment.dislikes.filter((id) => id !== userId);
+          } else {
+            comment.likes = comment.likes.filter((id) => id !== userId);
+          }
+
+        await comment.save();
+        res.status(200).json(comment)
+    } catch (error) {
+        res.status(500).json({message: error.message}) 
+    }
+}
+
+
+module.exports = { addComment, getComment, addCommentLike }
