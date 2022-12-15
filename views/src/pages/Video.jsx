@@ -32,7 +32,7 @@ const Video = () => {
     <Box minHeight="95vh" marginTop="10px" align="center">
         <VideoDetail data={data} user={user} />
         <ExtraInfo data={data} reaction={interaction} user={user} />
-        <Comments comments={comments} />
+        <Comments comments={comments}user={user} />
     </Box>
   )
 }

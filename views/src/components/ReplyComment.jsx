@@ -1,12 +1,12 @@
 import React from 'react'
 import SingleComment from './SingleComment'
 
-const ReplyComment = ({responseComment, comments}) => {
+const ReplyComment = ({responseComment, comments, user}) => {
 
   return (
-    <div style={{display: 'flex', marginLeft: '20px'}}>
+    <div style={{ marginLeft: '20px'}}>
         {responseComment?.length && responseComment.map((comment, index)=> (
-      <SingleComment key={index} comment={comment} comments={comments} />
+      <SingleComment key={index} user={user} comment={comment} comments={comments} />
       )
       )}
     </div>
